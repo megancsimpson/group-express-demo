@@ -3,6 +3,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.set('view engine', 'ejs');
 
 // TODO: Johnny add index.ejs and make a pretty landing page for Cohort 132
 app.get('/', (req, res) => {
@@ -10,6 +11,14 @@ app.get('/', (req, res) => {
 });
 
 // TODO: Onkar add /about. This displays app information such as name, port, and description.
+app.get('/about', (req, res) => {
+  res.render('about', {
+    name: 'Group Express Demo',
+    port: PORT,
+    description: 'A collaborative Express app'
+  });
+});
+
 
 // TODO: Megan add /teams route. This will display all team member names.
 
