@@ -8,6 +8,7 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// TODO: Johnny add index.ejs and make a pretty landing page for Cohort 132
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
@@ -30,9 +31,10 @@ app.get('/teams', (req, res) => {
   });
 });
 
-// TODO: Nithing add 404 handler. This will handle 404 not found requests.
-
-
+// TODO: Nithin add 404 handler. This will handle 404 not found requests.
+app.use((req, res) => {
+  res.status(404).send("404 - Page Not Found");
+});
 
 
 app.listen(PORT, () => {
