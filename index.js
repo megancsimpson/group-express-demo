@@ -14,7 +14,9 @@ app.get('/', (req, res) => {
 // TODO: Megan add /teams route. This will display all team member names.
 
 // TODO: Nithin add 404 handler. This will handle 404 not found requests.
-
+app.use((req, res) => {
+  res.status(404).send("404 - Page Not Found");
+});
 
 
 app.listen(PORT, () => {
