@@ -6,7 +6,7 @@ app.use(express.json());
 
 // TODO: Johnny add index.ejs and make a pretty landing page for Cohort 132
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+    res.render('index');
 });
 
 // TODO: Onkar add /about. This displays app information such as name, port, and description.
