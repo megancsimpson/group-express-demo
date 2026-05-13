@@ -7,7 +7,7 @@ app.set('view engine', 'ejs');
 
 // TODO: Johnny add index.ejs and make a pretty landing page for Cohort 132
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+    res.render('index');
 });
 
 // TODO: Onkar add /about. This displays app information such as name, port, and description.
@@ -23,7 +23,6 @@ app.get('/about', (req, res) => {
 // TODO: Megan add /teams route. This will display all team member names.
 
 // TODO: Nithin add 404 handler. This will handle 404 not found requests.
-
 app.use((req, res) => {
   res.status(404).send("404 - Page Not Found");
 });
