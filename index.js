@@ -15,9 +15,6 @@ app.get('/', (req, res) => {
 
 // TODO: Nithin add 404 handler. This will handle 404 not found requests.
 
-app.use((req, res) => {
-  res.status(404).send("404 - Page Not Found");
-});
 
 
 app.listen(PORT, () => {
