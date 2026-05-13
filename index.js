@@ -14,6 +14,14 @@ app.get('/', (req, res) => {
 });
 
 // TODO: Onkar add /about. This displays app information such as name, port, and description.
+app.get('/about', (req, res) => {
+  res.render('about', {
+    name: 'Group Express Demo',
+    port: PORT,
+    description: 'A collaborative Express app'
+  });
+});
+
 
 // TODO: Megan add /teams route. This will display all team member names.
 app.get('/teams', (req, res) => {
