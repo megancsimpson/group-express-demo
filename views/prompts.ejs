@@ -50,10 +50,16 @@
         margin-bottom: 8px;
       }
 
-      textarea {
+      .name {
+        font-size: 13px;
+        font-weight: 700;
+        color: #374151;
+        margin-bottom: 8px;
+      }
+
+      .prompt-box {
         width: 100%;
         min-height: 160px;
-        resize: vertical;
         color: #111827;
         background: #ffffff;
         border: 1px solid #d1d5db;
@@ -63,6 +69,11 @@
           "Liberation Mono", "Courier New", monospace;
         font-size: 13px;
         line-height: 1.45;
+        white-space: pre-wrap;
+      }
+
+      .prompt-box code {
+        white-space: pre-wrap;
       }
     </style>
   </head>
@@ -71,23 +82,38 @@
       <header>
         <div>
           <h1>KPOP Demon Hunter Prompts</h1>
-          <p class="subtitle">Paste and save different chat prompts here.</p>
+          <p class="subtitle">Developer-only reference page (edit this file to update prompts).</p>
         </div>
       </header>
 
       <div class="field">
-        <label for="prompt1">Prompt 1</label>
-        <textarea id="prompt1" placeholder="Paste prompt here..."></textarea>
+        <label>Prompt 1</label>
+        <div class="name">Name:</div>
+        <pre class="prompt-box"></pre>
       </div>
 
       <div class="field">
-        <label for="prompt2">Prompt 2</label>
-        <textarea id="prompt2" placeholder="Paste prompt here..."></textarea>
+        <label>Prompt 2</label>
+        <div class="name">Name:</div>
+        <pre class="prompt-box"></pre>
       </div>
 
       <div class="field">
-        <label for="prompt3">Prompt 3</label>
-        <textarea id="prompt3" placeholder="Paste prompt here..."></textarea>
+        <label>Prompt 3</label>
+        <div class="name">Name:</div>
+        <pre class="prompt-box"></pre>
+      </div>
+
+      <div class="field">
+        <label>Prompt 4</label>
+        <div class="name">Name:</div>
+        <pre class="prompt-box"></pre>
+      </div>
+
+      <div class="field">
+        <label>Prompt 5</label>
+        <div class="name">Name:</div>
+        <pre class="prompt-box"></pre>
       </div>
     </div>
   </body>
