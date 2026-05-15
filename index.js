@@ -39,6 +39,11 @@ app.get('/teams', (req, res) => {
   });
 });
 
+// Prompts page: a simple place for devs to keep/share chat prompts
+app.get('/prompts', (req, res) => {
+  res.render('prompts');
+});
+
 // TODO: Nithin add 404 handler. This will handle 404 not found requests.
 app.use((req, res) => {
   res.status(404).send("404 - Page Not Found");
