@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
+app.set('view engine', 'ejs');
 const PORT = 3000;
 
 app.use(express.json());
