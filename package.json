@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "ejs": "^5.0.2",
     "express": "^5.2.1"
