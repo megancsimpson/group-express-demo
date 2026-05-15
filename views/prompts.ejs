@@ -50,10 +50,16 @@
         margin-bottom: 8px;
       }
 
-      textarea {
+      .name {
+        font-size: 13px;
+        font-weight: 700;
+        color: #374151;
+        margin-bottom: 8px;
+      }
+
+      .prompt-box {
         width: 100%;
         min-height: 160px;
-        resize: vertical;
         color: #111827;
         background: #ffffff;
         border: 1px solid #d1d5db;
@@ -63,6 +69,11 @@
           "Liberation Mono", "Courier New", monospace;
         font-size: 13px;
         line-height: 1.45;
+        white-space: pre-wrap;
+      }
+
+      .prompt-box code {
+        white-space: pre-wrap;
       }
     </style>
   </head>
@@ -71,23 +82,60 @@
       <header>
         <div>
           <h1>KPOP Demon Hunter Prompts</h1>
-          <p class="subtitle">Paste and save different chat prompts here.</p>
+          <p class="subtitle">Developer-only reference page (edit this file to update prompts).</p>
         </div>
       </header>
 
       <div class="field">
-        <label for="prompt1">Prompt 1</label>
-        <textarea id="prompt1" placeholder="Paste prompt here..."></textarea>
+        <label>Prompt 1</label>
+        <div class="name">Name: Martin</div>
+        <pre class="prompt-box">Act as a creative consultant for the K-Pop Demon Hunters movie franchise. Your task is to explain the 5 technical stages of winemaking (Harvesting, Crushing, Fermentation, Clarification, and Aging) by assigning each stage to the main trio based on their personalities.
+
+Format: 
+Provide a breakdown for each stage. Include the Character in Charge, the Action they take, and a Technical Fact explaining why that action accurately represents the real winemaking process.
+
+Character Constraints:
+
+* Rumi: Use her disciplined leadership and "Golden" energy for the precision-based stages.
+* Mira: Use her blunt, rebellious nature and polearm for the physical extraction stages.
+* Zoey: Use her quirky, high-energy "Maknae" vibes for the transformative chemical stages.
+
+Example/Chain of Thought: 
+Stage: Crushing. 
+Character: Mira. 
+Action: Mira uses her polearm to smash the demon-vines. 
+Logic: Just as Mira is blunt but precise, crushing breaks the grape skins to release juice (the "must") without cracking the seeds, which prevents bitter tannins from ruining the flavor.
+
+The 5 Stages to Cover:
+1. Harvesting
+2. Crushing
+3. Fermentation
+4. Clarification
+5. Aging</pre>
       </div>
 
       <div class="field">
-        <label for="prompt2">Prompt 2</label>
-        <textarea id="prompt2" placeholder="Paste prompt here..."></textarea>
+        <label>Prompt 2</label>
+        <div class="name">Name: Megan</div>
+        <pre class="prompt-box">As different characters in the show "Kpop Demon hunters" from Netflix, please describe the stages of wine-making for someone who doesn't know anything about wine but loves the show Kpop Demon Hunters. Please break it up into numbered steps, with a few sentences each. Each step should be in the personality of a different character from Kpop Demon hunters and it should say their name. Please only use the the main characters, in their personality, telling the steps of how to make wine. Example output: Step 1: Harvesting Kpop demon hunter character: Jinu Harvesting process: (add a few sentences here)</pre>
       </div>
 
       <div class="field">
-        <label for="prompt3">Prompt 3</label>
-        <textarea id="prompt3" placeholder="Paste prompt here..."></textarea>
+        <label>Prompt 3</label>
+        <div class="name">Name:</div>
+        <pre class="prompt-box"></pre>
+      </div>
+
+      <div class="field">
+        <label>Prompt 4</label>
+        <div class="name">Name:</div>
+        <pre class="prompt-box"></pre>
+      </div>
+
+      <div class="field">
+        <label>Prompt 5</label>
+        <div class="name">Name:</div>
+        <pre class="prompt-box"></pre>
       </div>
     </div>
   </body>
