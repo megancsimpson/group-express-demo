@@ -5,9 +5,15 @@ const app = express();
 app.set('view engine', 'ejs');
 const PORT = 3000;
 
+require('dotenv').config();
+const mongoose = require("mongoose");
+
 app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+//connnect to mongoose
+mongoose.connect("mongo_connection_string");
 
 // TODO: Johnny add index.ejs and make a pretty landing page for Cohort 132
 app.get('/', (req, res) => {
