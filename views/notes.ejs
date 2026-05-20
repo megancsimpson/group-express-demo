@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Notes</title>
+  <style>
+    body { font-family: sans-serif; max-width: 700px; margin: 2rem auto; padding: 0 1rem; }
+    form { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem; }
+    input, textarea { padding: 0.4rem; font-size: 1rem; }
+    button { padding: 0.4rem 1rem; cursor: pointer; }
+    .note-card { border: 1px solid #ccc; border-radius: 4px; padding: 1rem; margin-bottom: 1rem; }
+    .note-card h3 { margin: 0 0 0.4rem; }
+    .actions { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
+  </style>
+</head>
+<body>
+  <h1>Notes</h1>
+  <a href="/">&larr; Home</a>
+
+  <!-- CREATE -->
+  <h2>Add a Note</h2>
+  <form action="/notes" method="POST">
+    <input  name="title"   placeholder="Title"   required />
+    <textarea name="content" placeholder="Content" rows="3" required></textarea>
+    <button type="submit">Save Note</button>
+  </form>
+
+  <!-- READ -->
+  <h2>All Notes (<%= notes.length %>)</h2>
+  <% if (notes.length === 0) { %>
+    <p>No notes yet — add one above!</p>
+  <% } %>
+  <% notes.forEach(note => { %>
+    <div class="note-card" id="note-<%= note.id %>">
+      <h3><%= note.title %></h3>
+      <p><%= note.content %></p>
+      <div class="actions">
+        <!-- UPDATE -->
+        <button onclick="editNote(<%= note.id %>, '<%= note.title.replace(/'/g, `\\'`) %>', '<%= note.content.replace(/'/g, `\\'`) %>')">Edit</button>
+        <!-- DELETE -->
+        <button onclick="deleteNote(<%= note.id %>)">Delete</button>
+      </div>
+    </div>
+  <% }) %>
+
+  <script>
+    async function deleteNote(id) {
+      if (!confirm('Delete this note?')) return;
+      await fetch('/notes/' + id, { method: 'DELETE' });
+      document.getElementById('note-' + id).remove();
+    }
+
+    async function editNote(id, currentTitle, currentContent) {
+      const title   = prompt('New title:', currentTitle);
+      if (title === null) return;
+      const content = prompt('New content:', currentContent);
+      if (content === null) return;
+
+      const res  = await fetch('/notes/' + id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, content })
+      });
+      const note = await res.json();
+      const card = document.getElementById('note-' + id);
+      card.querySelector('h3').textContent = note.title;
+      card.querySelector('p').textContent  = note.content;
+    }
+  </script>
+</body>
+</html>
