@@ -2,6 +2,7 @@ require('dotenv').config();
 const session = require('express-session');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const mongoose = require("mongoose");
 
 const express = require('express');
 const fs = require('fs');
@@ -10,8 +11,25 @@ const app = express();
 app.set('view engine', 'ejs');
 const PORT = 3000;
 
-require('dotenv').config();
-const mongoose = require("mongoose");
+// Add session and passport middleware
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Configure the Google Strategy
+passport.use(new GoogleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: '/auth/google/callback'
+}, (accessToken, refreshToken, profile, done) => {
+  return done(null, profile);
+}));
+passport.serializeUser((user, done) => done(null, user));
+passport.deserializeUser((user, done) => done(null, user));
 
 app.use(express.json());
 app.set('view engine', 'ejs');
