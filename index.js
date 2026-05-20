@@ -1,3 +1,7 @@
+// DNS fix for Windows 11 + Node v24 bug.
+const dns = require("dns");
+dns.setServers(['8.8.8.8', '1.1.1.1']);
+
 require('dotenv').config();
 const session = require('express-session');
 const passport = require('passport');
@@ -40,8 +44,8 @@ mongoose.connect(process.env.mongo_connection_string)
   .catch((err) => console.error('MongoDB connection error:', err));
 
 // TODO: Johnny add index.ejs and make a pretty landing page for Cohort 132
-app.get('/login', (req, res) => {
-  res.render('login', { user: req.user || null });
+app.get('/', (req, res) => {
+  res.render('index', { user: req.user || null });
 });
 
 // TODO: Onkar add /about. This displays app information such as name, port, and description.
@@ -75,7 +79,6 @@ app.get('/prompts', (req, res) => {
   res.render('prompts');
 });
 
-
 // Add the Auth routes
 app.get('/auth/google', passport.authenticate('google', {
   scope: ['profile', 'email']
@@ -90,13 +93,12 @@ app.get('/logout', (req, res) => {
   req.logout(() => res.redirect('/'));
 });
 // Pass the user to your views
-app.get('/', (req, res) => {
+app.get('/dashboard', (req, res) => {
   if (!req.user) {
-    return res.redirect('/login');
+    return res.redirect('/');
   }
-  res.render('index', { user: req.user || null });
+  res.render('dashboard', { user: req.user || null });
 });
-
 
 // TODO: Nithin add 404 handler. This will handle 404 not found requests.
 app.use((req, res) => {
