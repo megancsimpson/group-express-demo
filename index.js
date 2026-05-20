@@ -94,7 +94,15 @@ app.get('/auth/google/callback',
 app.get('/logout', (req, res) => {
   req.logout(() => res.redirect('/'));
 });
-
+// Pass the user to your views
+app.get('/', (req, res) => {
+  if (!req.user) {
+    return res.redirect('/login');
+  }
+  res.render('index', {
+    user: req.user
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);

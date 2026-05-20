@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>My App</title>
+
+  <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+  <% if (user) { %>
+
+    <p>Welcome, <%= user.displayName %>!</p>
+
+    <p><%= user.emails[0].value %></p>
+
+    <img src="<%= user.photos[0].value %>" alt="avatar" width="64">
+
+    <br><br>
+
+    <a href="/logout">Sign out</a>
+
+  <% } else { %>
+
+    <h1>My App</h1>
+
+    <p>Sign in to continue.</p>
+
+    <a href="/auth/google">Sign in with Google</a>
+
+  <% } %>
+
+</body>
+
+</html>
+
