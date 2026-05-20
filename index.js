@@ -75,10 +75,6 @@ app.get('/prompts', (req, res) => {
   res.render('prompts');
 });
 
-// TODO: Nithin add 404 handler. This will handle 404 not found requests.
-app.use((req, res) => {
-  res.status(404).send("404 - Page Not Found");
-});
 
 // Add the Auth routes
 app.get('/auth/google', passport.authenticate('google', {
@@ -99,6 +95,12 @@ app.get('/', (req, res) => {
     return res.redirect('/login');
   }
   res.render('index', { user: req.user || null });
+});
+
+
+// TODO: Nithin add 404 handler. This will handle 404 not found requests.
+app.use((req, res) => {
+  res.status(404).send("404 - Page Not Found");
 });
 
 app.listen(PORT, () => {
