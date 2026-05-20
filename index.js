@@ -8,7 +8,6 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-app.set('view engine', 'ejs');
 const PORT = 3000;
 
 // Add session and passport middleware
@@ -41,8 +40,8 @@ mongoose.connect(process.env.mongo_connection_string)
   .catch((err) => console.error('MongoDB connection error:', err));
 
 // TODO: Johnny add index.ejs and make a pretty landing page for Cohort 132
-app.get('/', (req, res) => {
-    res.render('index');
+app.get('/login', (req, res) => {
+  res.render('login', { user: req.user || null });
 });
 
 // TODO: Onkar add /about. This displays app information such as name, port, and description.
@@ -99,9 +98,7 @@ app.get('/', (req, res) => {
   if (!req.user) {
     return res.redirect('/login');
   }
-  res.render('index', {
-    user: req.user
-  });
+  res.render('index', { user: req.user || null });
 });
 
 app.listen(PORT, () => {
