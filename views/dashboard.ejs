@@ -6,6 +6,13 @@
     <title>Dashboard</title>
 </head>
 <body>
-    
+    <h1>Dashboard</h1>
+    <% if (user) { %>
+      <p>Signed in as <strong><%= user.displayName %></strong><% if (user.email) { %> (<%= user.email %>)<% } %></p>
+      <p><a href="/logout">Sign out</a></p>
+    <% } else { %>
+      <p>You are not signed in.</p>
+      <p><a href="/">Go home</a></p>
+    <% } %>
 </body>
 </html>

@@ -18,9 +18,13 @@
 
     <p>Welcome, <%= user.displayName %>!</p>
 
-    <p><%= user.emails[0].value %></p>
+    <% if (user.email) { %>
+      <p><%= user.email %></p>
+    <% } %>
 
-    <img src="<%= user.photos[0].value %>" alt="avatar" width="64">
+    <% if (user.photo) { %>
+      <img src="<%= user.photo %>" alt="avatar" width="64">
+    <% } %>
 
     <br><br>
 
@@ -39,4 +43,3 @@
 </body>
 
 </html>
-
